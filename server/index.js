@@ -1,4 +1,19 @@
 import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.preca8g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+  )
+  .then(() => {
+    console.log("connected to MongoDB database");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 const app = express();
 
